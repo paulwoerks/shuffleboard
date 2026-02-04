@@ -1,65 +1,117 @@
-import Image from "next/image";
+"use client";
+import { useState, useEffect } from 'react';
+import { useLanguage } from '@/hooks/useLanguage';
+import StoryPlayer from '@/components/StoryPlayer';
+import UploadModal from '@/components/UploadModal';
+import InfoModal from '@/components/InfoModal';
+import { supabase } from '@/lib/supabaseClient';
 
 export default function Home() {
+  const { t } = useLanguage();
+  const [loading, setLoading] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isInfoOpen, setIsInfoOpen] = useState(false); // State hinzugefügt
+
+  const [contentList, setContentList] = useState<any[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    async function fetchContent() {
+      // 1. Hol die 4 aktuellsten Bilder (statt 5, damit Platz für deins ist)
+      const { data: latestData } = await supabase
+        .from('content')
+        .select('*')
+        .order('id', { ascending: false })
+        .limit(4);
+
+      // 2. Hol dein spezielles Start-Bild (z.B. ID 1)
+      const { data: originalImage } = await supabase
+        .from('content')
+        .select('*')
+        .eq('id', 1) // Hier die ID deines QR-Code-Bildes eintragen
+        .single();
+
+      if (latestData) {
+        // Wir filtern dein Bild aus den "Neuesten" raus, falls es zufällig unter den Top 4 ist,
+        // damit es nicht doppelt erscheint.
+        const filteredLatest = latestData.filter(item => item.id !== 1);
+
+        // Wir setzen die Liste zusammen: Neueste zuerst, dein Bild ganz am Ende
+        const combined = originalImage
+          ? [...filteredLatest, originalImage]
+          : filteredLatest;
+
+        setContentList(combined);
+        setCurrentIndex(0);
+      }
+    }
+    fetchContent();
+  }, [refreshKey]);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="h-screen w-screen bg-black flex flex-col p-[5px] overflow-hidden">
+
+      {/* HEADER */}
+      <header className="w-full py-6 px-4 shrink-0 flex justify-between items-start">
+        <div>
+          <h1 className="text-white text-2xl font-black tracking-tighter drop-shadow-md">
+            {t.home.title}
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+          <p className="text-zinc-400 text-sm">{t.home.description}</p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        {/* INFO BUTTON: Weißer Kreis, schwarzes i */}
+        <button
+          onClick={() => setIsInfoOpen(true)}
+          className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-black font-bold shadow-xl active:scale-95 transition-all"
+        >
+          <span className="text-lg">i</span>
+        </button>
+      </header>
+
+      {/* MITTE: STORY DISPLAY */}
+      <section className="flex-1 relative w-full overflow-hidden">
+        {contentList && contentList.length > 0 ? (
+          <StoryPlayer
+            imageUrl={`https://gieuqsxsplewidaxpzkd.supabase.co/storage/v1/object/public/images/${contentList[currentIndex].image_url}`}
+            comment={contentList[currentIndex].comment}
+            timestamp={contentList[currentIndex].updated_at}
+            onNext={() => setCurrentIndex((prev) => Math.min(prev + 1, contentList.length - 1))}
+            onPrev={() => setCurrentIndex((prev) => Math.max(prev - 1, 0))}
+            currentIndex={currentIndex}
+            total={contentList.length}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-zinc-700 font-bold uppercase tracking-widest">
+            {loading ? "Lädt..." : "Noch keine Storys vorhanden"}
+          </div>
+        )}
+      </section>
+
+      {/* FOOTER: UPLOAD BUTTON */}
+      <footer className="w-full py-6 px-4 shrink-0">
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="w-full py-4 bg-white text-black rounded-full font-bold shadow-2xl active:scale-95 transition-all z-50 relative"
+        >
+          {t.home.uploadBtn}
+        </button>
+      </footer>
+
+      {/* MODALS */}
+      <UploadModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onUploadSuccess={() => setRefreshKey(Date.now())}
+        loading={loading}
+        setLoading={setLoading}
+      />
+
+      <InfoModal
+        isOpen={isInfoOpen}
+        onClose={() => setIsInfoOpen(false)}
+      />
+    </main>
   );
 }
