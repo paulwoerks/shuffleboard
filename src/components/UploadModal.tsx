@@ -86,7 +86,7 @@ export default function UploadModal({ isOpen, onClose, onUploadSuccess, loading,
                         onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
                         onDragLeave={() => setIsDragging(false)}
                         onDrop={handleDrop}
-                        className={`relative group cursor-pointer border-2 border-dashed rounded-3xl transition-all flex flex-col items-center justify-center overflow-hidden h-90
+                        className={`relative group cursor-pointer border-2 border-dashed rounded-3xl transition-all flex flex-col items-center justify-center overflow-hidden h-60
                             ${isDragging ? 'border-blue-600 bg-blue-50' : 'border-gray-300 bg-gray-50 hover:border-blue-400'}
                             ${preview ? 'border-blue-500' : ''}`}
                     >
