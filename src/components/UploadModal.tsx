@@ -87,8 +87,8 @@ export default function UploadModal({ isOpen, onClose, onUploadSuccess, loading,
                         onDragLeave={() => setIsDragging(false)}
                         onDrop={handleDrop}
                         className={`relative group cursor-pointer border-2 border-dashed rounded-3xl transition-all flex flex-col items-center justify-center overflow-hidden h-60
-                            ${isDragging ? 'border-blue-600 bg-blue-50' : 'border-gray-300 bg-gray-50 hover:border-blue-400'}
-                            ${preview ? 'border-blue-500' : ''}`}
+                            ${isDragging ? 'border-pink-500 bg-blue-50' : 'border-gray-300 bg-gray-50 hover:border-pink-500'}
+                            ${preview ? 'border-gray-500' : ''}`}
                     >
                         {preview ? (
                             <img src={preview} alt="Preview" className="w-full h-full object-cover" />
@@ -113,14 +113,14 @@ export default function UploadModal({ isOpen, onClose, onUploadSuccess, loading,
                             type="text"
                             name="comment"
                             placeholder={t.uploadModal.placeholder}
-                            className="w-full p-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none"
+                            className="w-full p-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-pink-500 outline-none"
                         />
                     </div>
 
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full py-4 rounded-2xl font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-lg active:scale-95 disabled:bg-gray-300"
+                        className="w-full py-4 rounded-2xl font-bold text-white bg-black hover:bg-pink-600 shadow-lg active:scale-95 disabled:bg-gray-300"
                     >
                         {loading ? t.uploadModal.uploading : t.uploadModal.submitBtn}
                     </button>

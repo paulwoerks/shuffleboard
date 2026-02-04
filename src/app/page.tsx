@@ -93,7 +93,7 @@ export default function Home() {
       <footer className="w-full py-6 px-4 shrink-0">
         <button
           onClick={() => setIsModalOpen(true)}
-          className="w-full py-4 bg-white text-black rounded-full font-bold shadow-2xl active:scale-95 transition-all z-50 relative"
+          className="w-full py-4 bg-white text-black rounded-2xl font-bold shadow-2xl hover:bg-pink-500 hover:text-white active:scale-95 transition-all z-50 relative"
         >
           {t.home.uploadBtn}
         </button>
