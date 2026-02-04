@@ -35,7 +35,9 @@ export async function POST(request: Request) {
             .from('content')
             .insert({
                 comment: comment.substring(0, APP_CONFIG.MAX_COMMENT_LENGTH),
-                image_url: fileName
+                image_url: fileName,
+                views: 0, // Explizit auf 0 setzen
+                likes: 0  // Explizit auf 0 setzen
             });
 
         if (dbError) throw dbError;
