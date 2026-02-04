@@ -4,7 +4,7 @@ import { formatTimestamp } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useStoryTimer } from '@/hooks/useStoryTimer';
 import { StoryProgress } from './StoryProgress';
-import { useLanguage } from '@/hooks/useLanguage'; // Importiert
+import { useLanguage } from '@/hooks/useLanguage';
 
 interface StoryPlayerProps {
     imageUrl: string;
@@ -21,10 +21,10 @@ const STORY_DURATION = 7500;
 export default function StoryPlayer({
     imageUrl, comment, timestamp, onNext, onPrev, currentIndex, total
 }: StoryPlayerProps) {
-    const { t } = useLanguage(); // Hook nutzen
-    const pressStartTimeRef = useRef<number>(0);
+    // Wir holen uns t für die Texte und locale für das Datumsformat
+    const { t, locale } = useLanguage();
 
-    // Timer Logik aus Custom Hook
+    const pressStartTimeRef = useRef<number>(0);
     const { progress, isPaused, setIsPaused } = useStoryTimer(STORY_DURATION, onNext, imageUrl);
 
     const handlePointerDown = () => {
@@ -46,7 +46,7 @@ export default function StoryPlayer({
             onPointerDown={handlePointerDown}
             onPointerLeave={() => setIsPaused(false)}
         >
-            {/* 1. Ausgelagerte Progress Bar */}
+            {/* 1. Progress Bar */}
             <StoryProgress total={total} currentIndex={currentIndex} progress={progress} />
 
             {/* 2. Navigations-Zonen */}
@@ -76,14 +76,19 @@ export default function StoryPlayer({
             <div className="absolute bottom-10 left-8 right-8 text-white z-20 pointer-events-none font-sans">
                 <div className="mb-3 opacity-60 flex justify-between items-end">
                     <div className="flex items-center gap-2">
+                        {/* Live-Indikator nur beim neuesten Bild */}
                         {currentIndex === 0 && !isPaused && <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />}
                         <span className="text-[10px] font-black uppercase tracking-[0.2em]">
-                            {/* Übersetzungen für Live und Historie */}
                             {currentIndex === 0 ? t.storyPlayer.live : t.storyPlayer.history}
                         </span>
                     </div>
-                    <span className="text-[11px] font-bold tabular-nums">{formatTimestamp(timestamp)}</span>
+
+                    {/* Das Datum wird jetzt mit dem aktuellen Locale formatiert */}
+                    <span className="text-[11px] font-bold tabular-nums">
+                        {formatTimestamp(timestamp, locale)}
+                    </span>
                 </div>
+
                 <AnimatePresence mode="wait">
                     <motion.p
                         key={comment}
@@ -92,7 +97,7 @@ export default function StoryPlayer({
                         exit={{ opacity: 0, y: -10 }}
                         className="text-2xl font-bold leading-tight"
                     >
-                        {comment || ""}
+                        {comment || "..."}
                     </motion.p>
                 </AnimatePresence>
             </div>
