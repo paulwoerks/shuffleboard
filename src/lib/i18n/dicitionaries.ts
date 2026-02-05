@@ -1,14 +1,14 @@
 export const dictionaries = {
     de: {
         home: {
-            title: "Chronik der Entdecker",
-            description: "Eine digitale Flaschenpost. Schau dir die anderen an und verewige dich selbst! 😁✌",
-            uploadBtn: "Jetzt Bild hochladen",
+            title: "Wir waren hier!",
+            description: "Schau dir die Augenblicke der anderen an – und hinterlasse deine eigene Spur! 😁✌",
+            uploadBtn: "Bild hochladen",
             loading: "Lädt...",
         },
         infoModal: {
             title: "Über das Projekt",
-            textPart1: "Genau wie du bin ich zufällig auf diesen QR-Code gestoßen. Da er damals ins Leere führte, habe ich beschlossen, ihm Leben einzuhauchen und diese Seite zu programmieren.",
+            textPart1: "Genau wie du bin ich zufällig auf diesen QR-Code gestoßen. Da er damals ins Leere führte, habe ich beschlossen, ihm Leben einzuhauchen und diese Seite zu erstellen.",
             textPart2: "Betrachte diese Seite als unsere digitale Flaschenpost: Hinterlasse ein Bild, eine Nachricht oder einen flüchtigen Moment für den nächsten Neugierigen, der dieses Geheimnis entdeckt.",
             textPart3: "Paul aus Deutschland, 2024",
             paypalBtn: "Für das Projekt spenden",
@@ -25,9 +25,8 @@ export const dictionaries = {
         },
         welcomeScreen: {
             title: "Glückwunsch! 🎉",
-            description1: "Du hast den geheimen QR-Code gefunden!",
-            description2: "Schau dir an, was andere vor dir hinterlassen haben und hinterlasse selbst eine Spur.",
-            startBtn: "Okay! ✌",
+            description: "Du hast den geheimen QR-Code gefunden!",
+            startBtn: "Weiter 👀",
         },
         errors: {
             general: "Ein Fehler ist aufgetreten",
@@ -38,15 +37,15 @@ export const dictionaries = {
 
     en: {
         home: {
-            title: "Chronicle of Discoverers",
-            description: "A digital message in a bottle. Check out what others have left and leave your own mark! 😁✌",
-            uploadBtn: "Upload image now",
+            title: "We Were Here!",
+            description: "Check out what others have captured – and leave your own mark! 😁✌",
+            uploadBtn: "Upload image",
             loading: "Loading...",
         },
         infoModal: {
-            title: "About the project",
-            textPart1: "Just like you, I stumbled upon this QR code by chance. Since it led nowhere at the time, I decided to bring it to life and build this page.",
-            textPart2: "Think of this page as our digital message in a bottle: leave a photo, a message, or a fleeting moment for the next curious person who discovers this secret.",
+            title: "About the Project",
+            textPart1: "Just like you, I stumbled upon this QR code by chance. Since it led nowhere at the time, I decided to bring it to life and create this page.",
+            textPart2: "Think of this page as our digital message in a bottle: leave a photo, a message, or a fleeting moment for the next curious soul who discovers this secret.",
             textPart3: "Paul from Germany, 2024",
             paypalBtn: "Support the project",
             closeBtn: "Close",
@@ -62,9 +61,8 @@ export const dictionaries = {
         },
         welcomeScreen: {
             title: "Congratulations! 🎉",
-            description1: "You’ve discovered the secret QR code!",
-            description2: "See what others have left before you and leave your own mark.",
-            startBtn: "Okay! ✌",
+            description: "You’ve discovered the secret QR code!",
+            startBtn: "Let's go! 👀",
         },
         errors: {
             general: "An error occurred",
@@ -75,33 +73,32 @@ export const dictionaries = {
 
     th: {
         home: {
-            title: "บันทึกของนักสำรวจ",
-            description: "ขวดข้อความดิจิทัล ดูสิ่งที่คนอื่นทิ้งไว้และฝากร่องรอยของคุณเอง! 😁✌",
-            uploadBtn: "อัปโหลดรูปภาพ",
+            title: "เรามาแล้ว!",
+            description: "ดูช่วงเวลาของคนอื่น และฝากร่องรอยของคุณเอง! 😁✌",
+            uploadBtn: "อัปโหลดรูป",
             loading: "กำลังโหลด...",
         },
         infoModal: {
             title: "เกี่ยวกับโปรเจกต์",
-            textPart1: "เช่นเดียวกับคุณ ผมบังเอิญพบ QR Code นี้ เมื่อมันยังไม่พาไปที่ใด ผมจึงตัดสินใจสร้างชีวิตใหม่ให้มันด้วยการทำหน้านี้",
-            textPart2: "คิดว่าหน้านี้เป็นขวดข้อความดิจิทัลของเรา: ฝากภาพ ข้อความ หรือช่วงเวลาสั้น ๆ ไว้ให้ผู้ที่อยากรู้อยากเห็นคนต่อไปที่ค้นพบความลับนี้",
+            textPart1: "เช่นเดียวกับคุณ ผมบังเอิญพบ QR Code นี้ และเนื่องจากมันไม่พาไปไหน ผมจึงตัดสินใจสร้างชีวิตใหม่ให้มันด้วยการสร้างหน้านี้",
+            textPart2: "คิดว่าหน้านี้เป็นขวดข้อความดิจิทัลของเรา: ฝากรูป ข้อความ หรือช่วงเวลาสั้น ๆ สำหรับผู้ที่อยากรู้อยากเห็นคนต่อไปที่ค้นพบความลับนี้",
             textPart3: "Paul จากเยอรมนี, 2024",
             paypalBtn: "สนับสนุนโปรเจกต์",
             closeBtn: "ปิด",
         },
         uploadModal: {
-            title: "อัปโหลดรูปภาพ",
+            title: "อัปโหลดรูป",
             captionLabel: "ข้อความ (ไม่บังคับ)",
             placeholder: "เขียนอะไรสักหน่อย...",
-            submitBtn: "โพสต์",
-            instruction: "คลิกหรือลากรูปภาพมาที่นี่",
+            submitBtn: "โพสต์เลย",
+            instruction: "คลิกหรือลากรูปมาที่นี่",
             uploading: "กำลังอัปโหลด...",
             success: "ขอบคุณมาก!",
         },
         welcomeScreen: {
             title: "ยินดีด้วย! 🎉",
-            description1: "คุณพบ QR Code ลับแล้ว!",
-            description2: "ดูสิ่งที่คนอื่นฝากไว้ก่อนคุณและฝากร่องรอยของคุณเอง",
-            startBtn: "โอเค! ✌",
+            description: "คุณพบ QR Code ลับแล้ว!",
+            startBtn: "ไปกัน! 👀",
         },
         errors: {
             general: "เกิดข้อผิดพลาด",
@@ -112,33 +109,32 @@ export const dictionaries = {
 
     zh: {
         home: {
-            title: "探索者纪事",
-            description: "一封数字漂流瓶。看看别人留下了什么，也留下你自己的痕迹！ 😁✌",
+            title: "我们来了！",
+            description: "看看别人留下的瞬间，并留下你的痕迹！ 😁✌",
             uploadBtn: "上传图片",
             loading: "加载中...",
         },
         infoModal: {
-            title: "关于这个项目",
-            textPart1: "就像你一样，我也是偶然发现了这个二维码。由于当时它什么也没有，我决定赋予它生命，并制作了这个页面。",
-            textPart2: "把这个页面当作我们的数字漂流瓶吧：留下照片、留言或一个短暂的瞬间，送给下一个发现这个秘密的好奇之人。",
-            textPart3: "来自德国的 Paul，2024 年",
-            paypalBtn: "支持这个项目",
+            title: "关于项目",
+            textPart1: "就像你一样，我偶然发现了这个二维码。由于当时它什么也没有，我决定赋予它生命并创建了这个页面。",
+            textPart2: "把这个页面当作我们的数字漂流瓶吧：留下照片、留言或一个短暂的瞬间，给下一个发现这个秘密的人。",
+            textPart3: "Paul 来自德国，2024",
+            paypalBtn: "支持项目",
             closeBtn: "关闭",
         },
         uploadModal: {
             title: "上传图片",
             captionLabel: "留言（可选）",
-            placeholder: "写点什么吧...",
-            submitBtn: "发布",
+            placeholder: "写点什么...",
+            submitBtn: "立即发布",
             instruction: "点击或拖拽图片到这里",
             uploading: "上传中...",
-            success: "谢谢你！",
+            success: "谢谢！",
         },
         welcomeScreen: {
-            title: "恭喜你！🎉",
-            description1: "你找到了隐藏的 QR 码！",
-            description2: "看看别人留下了什么，并留下你自己的痕迹",
-            startBtn: "好！✌",
+            title: "恭喜！🎉",
+            description: "你发现了秘密 QR 码！",
+            startBtn: "开始吧! 👀",
         },
         errors: {
             general: "发生错误",
@@ -149,33 +145,32 @@ export const dictionaries = {
 
     he: {
         home: {
-            title: "יומן המגלים",
-            description: "בקבוק מסר דיגיטלי. הסתכל מה אחרים השאירו והשאר את הסימן שלך! 😁✌",
+            title: "הגענו!",
+            description: "ראה את הרגעים של אחרים והשאר את הסימן שלך! 😁✌",
             uploadBtn: "העלה תמונה",
             loading: "טוען...",
         },
         infoModal: {
             title: "על הפרויקט",
-            textPart1: "בדיוק כמוך, גם אני נתקלתי בקוד ה-QR הזה במקרה. מכיוון שהוא לא הוביל לשום מקום, החלטתי להחיות אותו ולבנות את העמוד הזה.",
-            textPart2: "ראה בדף הזה בקבוק מסר דיגיטלי משלנו: השאר תמונה, הודעה או רגע חולף עבור הסקרן הבא שיגלה את הסוד הזה.",
+            textPart1: "בדיוק כמוך, גם אני נתקלתי בקוד ה-QR הזה במקרה. מכיוון שהוא לא הוביל לשום מקום, החלטתי להחיות אותו וליצור את העמוד הזה.",
+            textPart2: "ראה בדף הזה בקבוק מסר דיגיטלי שלנו: השאר תמונה, הודעה או רגע חולף עבור הסקרן הבא שיגלה את הסוד הזה.",
             textPart3: "Paul מגרמניה, 2024",
             paypalBtn: "תמיכה בפרויקט",
             closeBtn: "סגור",
         },
         uploadModal: {
-            title: "העלאת תמונה",
+            title: "העלה תמונה",
             captionLabel: "הודעה (לא חובה)",
             placeholder: "כתוב משהו...",
-            submitBtn: "פרסם",
+            submitBtn: "פרסם עכשיו",
             instruction: "לחץ או גרור תמונה לכאן",
             uploading: "מעלה...",
             success: "תודה רבה!",
         },
         welcomeScreen: {
             title: "מזל טוב! 🎉",
-            description1: "מצאת את קוד ה-QR הסודי!",
-            description2: "ראה מה אחרים השאירו לפניך והשאר את חותמך",
-            startBtn: "אוקיי! ✌",
+            description: "מצא את קוד ה-QR הסודי!",
+            startBtn: "התחל! 👀",
         },
         errors: {
             general: "אירעה שגיאה",
@@ -186,8 +181,8 @@ export const dictionaries = {
 
     fr: {
         home: {
-            title: "Chronique des Découvreurs",
-            description: "Une bouteille à la mer numérique. Découvre ce que les autres ont laissé et laisse ta propre trace ! 😁✌",
+            title: "Nous étions là !",
+            description: "Découvrez les moments des autres et laissez votre propre trace ! 😁✌",
             uploadBtn: "Téléverser une image",
             loading: "Chargement...",
         },
@@ -203,16 +198,15 @@ export const dictionaries = {
             title: "Téléverser une image",
             captionLabel: "Message (optionnel)",
             placeholder: "Écris quelque chose...",
-            submitBtn: "Publier",
+            submitBtn: "Publier maintenant",
             instruction: "Clique ou glisse une image ici.",
             uploading: "Téléversement...",
             success: "Merci beaucoup !",
         },
         welcomeScreen: {
             title: "Félicitations ! 🎉",
-            description1: "Tu as découvert le QR code secret !",
-            description2: "Regarde ce que les autres ont laissé et laisse ta propre trace",
-            startBtn: "OK ! ✌",
+            description: "Tu as découvert le QR code secret !",
+            startBtn: "C'est parti ! 👀",
         },
         errors: {
             general: "Une erreur est survenue",
@@ -223,8 +217,8 @@ export const dictionaries = {
 
     ru: {
         home: {
-            title: "Хроника исследователей",
-            description: "Цифровое послание в бутылке. Посмотри, что оставили другие, и оставь свой след! 😁✌",
+            title: "Мы здесь!",
+            description: "Смотри моменты других и оставь свой след! 😁✌",
             uploadBtn: "Загрузить изображение",
             loading: "Загрузка...",
         },
@@ -240,16 +234,15 @@ export const dictionaries = {
             title: "Загрузить изображение",
             captionLabel: "Сообщение (необязательно)",
             placeholder: "Напиши что-нибудь...",
-            submitBtn: "Опубликовать",
+            submitBtn: "Опубликовать сейчас",
             instruction: "Нажми или перетащи изображение сюда",
             uploading: "Загрузка...",
             success: "Спасибо!",
         },
         welcomeScreen: {
             title: "Поздравляем! 🎉",
-            description1: "Ты нашёл секретный QR-код!",
-            description2: "Посмотри, что оставили другие до тебя, и оставь свой след",
-            startBtn: "Окей! ✌",
+            description: "Ты нашёл секретный QR-код!",
+            startBtn: "Вперёд! 👀",
         },
         errors: {
             general: "Произошла ошибка",
@@ -260,8 +253,8 @@ export const dictionaries = {
 
     es: {
         home: {
-            title: "Crónica de los Descubridores",
-            description: "Un mensaje digital en botella. Mira lo que otros han dejado y deja tu propia huella! 😁✌",
+            title: "¡Aquí estuvimos!",
+            description: "Mira los momentos de los demás y deja tu propia huella! 😁✌",
             uploadBtn: "Subir imagen",
             loading: "Cargando...",
         },
@@ -277,16 +270,15 @@ export const dictionaries = {
             title: "Subir imagen",
             captionLabel: "Mensaje (opcional)",
             placeholder: "Escribe algo...",
-            submitBtn: "Publicar",
+            submitBtn: "Publicar ahora",
             instruction: "Haz clic o arrastra una imagen aquí",
             uploading: "Subiendo...",
             success: "¡Muchas gracias!",
         },
         welcomeScreen: {
             title: "¡Felicidades! 🎉",
-            description1: "¡Has descubierto el código QR secreto!",
-            description2: "Mira lo que otros han dejado antes que tú y deja tu propia huella",
-            startBtn: "¡Ok! ✌",
+            description: "¡Has descubierto el código QR secreto!",
+            startBtn: "¡Vamos! 👀",
         },
         errors: {
             general: "Ha ocurrido un error",

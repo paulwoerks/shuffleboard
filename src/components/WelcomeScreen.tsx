@@ -43,8 +43,7 @@ export default function WelcomeScreen({ onStart }: WelcomeScreenProps) {
                 {/* UNTERSCHRIFT */}
                 <div className="animate-text-reveal space-y-4">
                     <p className="text-white text-lg font-medium leading-tight">
-                        {t.welcomeScreen.description1}<br /><br />
-                        {t.welcomeScreen.description2}
+                        {t.welcomeScreen.description}
                     </p>
                 </div>
 
