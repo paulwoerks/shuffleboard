@@ -7,7 +7,7 @@ export function useLanguage() {
     const [locale, setLocale] = useState<Locale>('en');
 
     useEffect(() => {
-        // Check browser language
+        /** Check browser language */
         const browserLang = navigator.language.split('-')[0] as Locale;
 
         if (dictionaries[browserLang]) {
@@ -17,7 +17,7 @@ export function useLanguage() {
 
     return {
         locale,
-        t: dictionaries[locale], // "t" steht traditionell für "translate"
+        t: dictionaries[locale],
         setLocale
     };
 }

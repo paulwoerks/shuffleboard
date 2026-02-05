@@ -50,7 +50,7 @@ export default function UploadModal({ isOpen, onClose, onUploadSuccess, loading,
             const res = await fetch('/api/upload', {
                 method: 'POST',
                 body: formData,
-                headers: { 'Accept-Language': locale } // Sprache mitschicken
+                headers: { 'Accept-Language': locale }
             });
 
             if (res.ok) {

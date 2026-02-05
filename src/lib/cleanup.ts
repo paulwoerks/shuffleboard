@@ -1,18 +1,18 @@
 import { supabaseAdmin } from '@/lib/supabase';
 
 /**
- * Löscht alte Einträge und Bilder, wenn das Limit überschritten wird.
- * @param maxItems Die maximale Anzahl an Bildern, die behalten werden sollen.
+ * Deletes old images from the database and storage, keeping only the most recent ones up to the specified limit.
+ * @param maxItems The maximum number of images to keep (excluding the original image with ID 1)
  */
 export async function cleanupOldContent(maxImages: number) {
-    // 1. Zähle alle Bilder außer dein Ur-Bild
+    // 1. count total images (excluding the protected one with ID 1)
     const { count } = await supabaseAdmin
         .from('content')
         .select('*', { count: 'exact', head: true })
-        .neq('id', 1); // Dein geschütztes Bild ignorieren
+        .neq('id', 1);
 
     if (count && count > maxImages) {
-        // 2. Lösche das älteste Bild, das NICHT ID 1 ist
+        // 2. delete the oldest image (the one with the smallest created_at timestamp, excluding ID 1)
         const { data: oldest } = await supabaseAdmin
             .from('content')
             .select('id, image_url')
@@ -22,9 +22,7 @@ export async function cleanupOldContent(maxImages: number) {
             .single();
 
         if (oldest) {
-            // Datei aus Storage löschen
             await supabaseAdmin.storage.from('images').remove([oldest.image_url]);
-            // Eintrag aus DB löschen
             await supabaseAdmin.from('content').delete().eq('id', oldest.id);
         }
     }

@@ -21,7 +21,6 @@ const STORY_DURATION = 7500;
 export default function StoryPlayer({
     imageUrl, comment, timestamp, onNext, onPrev, currentIndex, total
 }: StoryPlayerProps) {
-    // Wir holen uns t für die Texte und locale für das Datumsformat
     const { t, locale } = useLanguage();
 
     const pressStartTimeRef = useRef<number>(0);
@@ -49,13 +48,13 @@ export default function StoryPlayer({
             {/* 1. Progress Bar */}
             <StoryProgress total={total} currentIndex={currentIndex} progress={progress} />
 
-            {/* 2. Navigations-Zonen */}
+            {/* 2. Navigation zones */}
             <div className="absolute inset-0 z-30 flex">
                 <div className="w-1/3 h-full cursor-pointer" onPointerUp={() => handlePointerUp('prev')} />
                 <div className="w-2/3 h-full cursor-pointer" onPointerUp={() => handlePointerUp('next')} />
             </div>
 
-            {/* 3. Bild-Layer */}
+            {/* 3. Image Layer */}
             <div className="absolute inset-0 z-10 bg-zinc-950">
                 <AnimatePresence mode="popLayout" initial={false}>
                     <motion.div
@@ -76,8 +75,6 @@ export default function StoryPlayer({
             <div className="absolute bottom-10 left-8 right-8 text-white z-20 pointer-events-none font-sans">
                 <div className="mb-3 opacity-60 flex justify-between items-end">
                     <div className="flex items-center gap-2">
-                        {/* Live-Indikator nur beim neuesten Bild */}
-                        {currentIndex === 0 && !isPaused && <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />}
                         <span className="text-[11px] font-black">
                             {formatTimestamp(timestamp, locale)}
                         </span>

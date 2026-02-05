@@ -19,7 +19,6 @@ export function StoryProgress({ total, currentIndex, progress }: StoryProgressPr
                             className="h-full bg-white"
                             style={{
                                 width: isCompleted ? '100%' : isActive ? `${progress}%` : '0%',
-                                // Transition nur für das schnelle Auffüllen beim Springen
                                 transition: isCompleted ? 'width 0.2s ease-out' : 'none'
                             }}
                         />

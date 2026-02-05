@@ -18,26 +18,24 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchContent() {
-      // 1. Hol die 4 aktuellsten Bilder (statt 5, damit Platz für deins ist)
+      /** Get 9 newest images */
       const { data: latestData } = await supabase
         .from('content')
         .select('*')
         .order('id', { ascending: false })
-        .limit(4);
+        .limit(9);
 
-      // 2. Hol dein spezielles Start-Bild (z.B. ID 1)
+      /** Original Post */
       const { data: originalImage } = await supabase
         .from('content')
         .select('*')
-        .eq('id', 1) // Hier die ID deines QR-Code-Bildes eintragen
+        .eq('id', 1)
         .single();
 
       if (latestData) {
-        // Wir filtern dein Bild aus den "Neuesten" raus, falls es zufällig unter den Top 4 ist,
-        // damit es nicht doppelt erscheint.
+        /** filter original post to prevent duplicate display */
         const filteredLatest = latestData.filter(item => item.id !== 1);
 
-        // Wir setzen die Liste zusammen: Neueste zuerst, dein Bild ganz am Ende
         const combined = originalImage
           ? [...filteredLatest, originalImage]
           : filteredLatest;
@@ -54,7 +52,7 @@ export default function Home() {
 
       {/* HEADER */}
       <header className="w-full py-6 px-4 flex items-center">
-        {/* LINKS: Titel + Beschreibung, umbruchfähig */}
+        {/* Title + Description */}
         <div className="flex flex-col justify-center flex-1 min-w-0">
           <h1 className="text-white text-2xl font-black tracking-tighter drop-shadow-md break-words">
             {t.home.title}
@@ -64,7 +62,7 @@ export default function Home() {
           </p>
         </div>
 
-        {/* RECHTS: Info-Button, fix */}
+        {/* Infobutton */}
         <button
           onClick={() => setIsInfoOpen(true)}
           className="w-12 h-12 flex-shrink-0 rounded-full bg-white flex items-center justify-center text-black font-bold shadow-xl active:scale-95 transition-all ml-4"
@@ -73,7 +71,7 @@ export default function Home() {
         </button>
       </header>
 
-      {/* MITTE: STORY DISPLAY */}
+      {/* Story Display */}
       <section className="flex-1 relative w-full overflow-hidden">
         {contentList && contentList.length > 0 ? (
           <StoryPlayer
@@ -92,7 +90,7 @@ export default function Home() {
         )}
       </section>
 
-      {/* FOOTER: UPLOAD BUTTON */}
+      {/* Upload Button */}
       <footer className="w-full py-6 px-4 shrink-0">
         <button
           onClick={() => setIsModalOpen(true)}

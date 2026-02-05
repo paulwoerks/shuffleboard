@@ -1,6 +1,9 @@
 /**
- * Formatiert einen ISO-Zeitstempel in Bangkok-Zeit
- * z.B. "20.01.2026, 10:45"
+ * formats a timestamp into a human-readable format based on the specified locale.
+ * @param timestamp The ISO string timestamp to format.
+ * @param locale The locale code (e.g., 'de' for German) to format the date. Default is 'de'.
+ * @returns A formatted date string according to the specified locale.
+ *
  */
 export function formatTimestamp(timestamp: string, locale: string = 'de') {
     if (!timestamp) return "";

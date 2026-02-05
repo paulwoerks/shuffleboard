@@ -13,12 +13,12 @@ export async function POST(request: Request) {
         const file = formData.get('file') as File;
         const comment = (formData.get('comment') as string) || "";
 
-        // 1. Validierung
+        // 1. Validation
         if (!file || !APP_CONFIG.ALLOWED_MIME_TYPES.includes(file.type)) {
             return NextResponse.json({ error: t.errors.fileType || "Invalid file" }, { status: 400 });
         }
 
-        // 2. Dateinamen generieren
+        // 2. generate unique file name
         const fileExt = file.name.split('.').pop() || 'jpg';
         const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 6)}.${fileExt}`;
 
@@ -30,20 +30,19 @@ export async function POST(request: Request) {
 
         if (uploadError) throw uploadError;
 
-        // 4. Eintrag erstellen (Database)
+        // 4. Create DB entry
         const { error: dbError } = await supabaseAdmin
             .from('content')
             .insert({
                 comment: comment.substring(0, APP_CONFIG.MAX_COMMENT_LENGTH),
                 image_url: fileName,
-                views: 0, // Explizit auf 0 setzen
-                likes: 0  // Explizit auf 0 setzen
+                views: 0,
+                likes: 0
             });
 
         if (dbError) throw dbError;
 
-        // 5. Cleanup (Wird getriggert, aber wir müssen nicht zwingend darauf warten)
-        // cleanupOldContent(APP_CONFIG.MAX_IMAGES); // Ohne await = schnellerer Response für User
+        // 5. Cleanup old content if limit exceeded (optional: do this asynchronously without await for faster response)
         await cleanupOldContent(APP_CONFIG.MAX_IMAGES);
 
         return NextResponse.json({ success: true });
