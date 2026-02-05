@@ -7,6 +7,8 @@ import { StoryProgress } from './StoryProgress';
 import { useLanguage } from '@/hooks/useLanguage';
 
 interface StoryPlayerProps {
+    isActive: boolean;
+    isPausedExternal?: boolean;
     imageUrl: string;
     comment: string;
     timestamp: string;
@@ -19,12 +21,17 @@ interface StoryPlayerProps {
 const STORY_DURATION = 7500;
 
 export default function StoryPlayer({
-    imageUrl, comment, timestamp, onNext, onPrev, currentIndex, total
+    isActive, isPausedExternal = false, imageUrl, comment, timestamp, onNext, onPrev, currentIndex, total
 }: StoryPlayerProps) {
     const { t, locale } = useLanguage();
-
     const pressStartTimeRef = useRef<number>(0);
-    const { progress, isPaused, setIsPaused } = useStoryTimer(STORY_DURATION, onNext, imageUrl);
+
+    const { progress, isPaused, setIsPaused } = useStoryTimer(
+        STORY_DURATION,
+        onNext,
+        imageUrl,
+        isActive && !isPausedExternal
+    );
 
     const handlePointerDown = () => {
         pressStartTimeRef.current = Date.now();
@@ -43,18 +50,15 @@ export default function StoryPlayer({
         <div
             className="w-full h-full relative rounded-[32px] overflow-hidden bg-black shadow-2xl select-none touch-none"
             onPointerDown={handlePointerDown}
-            onPointerLeave={() => setIsPaused(false)}
+            onPointerLeave={() => !isPausedExternal && setIsPaused(false)}
         >
-            {/* 1. Progress Bar */}
             <StoryProgress total={total} currentIndex={currentIndex} progress={progress} />
 
-            {/* 2. Navigation zones */}
             <div className="absolute inset-0 z-30 flex">
                 <div className="w-1/3 h-full cursor-pointer" onPointerUp={() => handlePointerUp('prev')} />
                 <div className="w-2/3 h-full cursor-pointer" onPointerUp={() => handlePointerUp('next')} />
             </div>
 
-            {/* 3. Image Layer */}
             <div className="absolute inset-0 z-10 bg-zinc-950">
                 <AnimatePresence mode="popLayout" initial={false}>
                     <motion.div
@@ -70,17 +74,13 @@ export default function StoryPlayer({
                 </AnimatePresence>
             </div>
 
-            {/* 4. Text & Overlay */}
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none z-20" />
             <div className="absolute bottom-10 left-8 right-8 text-white z-20 pointer-events-none font-sans">
                 <div className="mb-3 opacity-60 flex justify-between items-end">
-                    <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-black">
-                            {formatTimestamp(timestamp, locale)}
-                        </span>
-                    </div>
+                    <span className="text-[11px] font-black uppercase tracking-widest">
+                        {formatTimestamp(timestamp, locale)}
+                    </span>
                 </div>
-
                 <AnimatePresence mode="wait">
                     <motion.p
                         key={comment}

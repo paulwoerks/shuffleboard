@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-export function useStoryTimer(duration: number, onComplete: () => void, activeKey: string) {
+export function useStoryTimer(duration: number, onComplete: () => void, activeKey: string, isEnabled: boolean = true) {
     const [progress, setProgress] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
 
@@ -23,7 +23,7 @@ export function useStoryTimer(duration: number, onComplete: () => void, activeKe
     };
 
     useEffect(() => {
-        if (!isPaused) {
+        if (isEnabled && !isPaused) {
             requestRef.current = requestAnimationFrame(animate);
         } else {
             if (requestRef.current) cancelAnimationFrame(requestRef.current);
@@ -33,7 +33,7 @@ export function useStoryTimer(duration: number, onComplete: () => void, activeKe
             startTimeRef.current = null;
         }
         return () => { if (requestRef.current) cancelAnimationFrame(requestRef.current); };
-    }, [isPaused, activeKey]);
+    }, [isPaused, activeKey, isEnabled]);
 
     useEffect(() => {
         setProgress(0);

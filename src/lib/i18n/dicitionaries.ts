@@ -1,8 +1,8 @@
 export const dictionaries = {
     de: {
         home: {
-            title: "Glückwunsch! 🎉",
-            description: "Du hast den geheimen QR-Code entdeckt. Verewige dich mit einem Bild! ✌",
+            title: "Chronik der Entdecker",
+            description: "Eine digitale Flaschenpost. Schau dir die anderen an und verewige dich selbst! 😁✌",
             uploadBtn: "Jetzt Bild hochladen",
             loading: "Lädt...",
         },
@@ -23,6 +23,12 @@ export const dictionaries = {
             uploading: "Wird geladen...",
             success: "Vielen Dank!",
         },
+        welcomeScreen: {
+            title: "Glückwunsch! 🎉",
+            description1: "Du hast den geheimen QR-Code gefunden!",
+            description2: "Schau dir an, was andere vor dir hinterlassen haben und hinterlasse selbst eine Spur.",
+            startBtn: "Okay! ✌",
+        },
         errors: {
             general: "Ein Fehler ist aufgetreten",
             fileType: "Nur JPG, PNG oder WebP erlaubt!",
@@ -32,8 +38,8 @@ export const dictionaries = {
 
     en: {
         home: {
-            title: "Congratulations! 🎉",
-            description: "You’ve discovered the secret QR code. Leave your mark with a photo! ✌",
+            title: "Chronicle of Discoverers",
+            description: "A digital message in a bottle. Check out what others have left and leave your own mark! 😁✌",
             uploadBtn: "Upload image now",
             loading: "Loading...",
         },
@@ -54,6 +60,12 @@ export const dictionaries = {
             uploading: "Uploading...",
             success: "Thank you!",
         },
+        welcomeScreen: {
+            title: "Congratulations! 🎉",
+            description1: "You’ve discovered the secret QR code!",
+            description2: "See what others have left before you and leave your own mark.",
+            startBtn: "Okay! ✌",
+        },
         errors: {
             general: "An error occurred",
             fileType: "Only JPG, PNG or WebP allowed!",
@@ -63,8 +75,8 @@ export const dictionaries = {
 
     th: {
         home: {
-            title: "ยินดีด้วย! 🎉",
-            description: "คุณค้นพบ QR Code ลับแล้ว ฝากร่องรอยของคุณด้วยภาพถ่าย! ✌",
+            title: "บันทึกของนักสำรวจ",
+            description: "ขวดข้อความดิจิทัล ดูสิ่งที่คนอื่นทิ้งไว้และฝากร่องรอยของคุณเอง! 😁✌",
             uploadBtn: "อัปโหลดรูปภาพ",
             loading: "กำลังโหลด...",
         },
@@ -85,6 +97,12 @@ export const dictionaries = {
             uploading: "กำลังอัปโหลด...",
             success: "ขอบคุณมาก!",
         },
+        welcomeScreen: {
+            title: "ยินดีด้วย! 🎉",
+            description1: "คุณพบ QR Code ลับแล้ว!",
+            description2: "ดูสิ่งที่คนอื่นฝากไว้ก่อนคุณและฝากร่องรอยของคุณเอง",
+            startBtn: "โอเค! ✌",
+        },
         errors: {
             general: "เกิดข้อผิดพลาด",
             fileType: "รองรับเฉพาะ JPG, PNG หรือ WebP เท่านั้น!",
@@ -94,8 +112,8 @@ export const dictionaries = {
 
     zh: {
         home: {
-            title: "恭喜你！🎉",
-            description: "你发现了这个隐藏的二维码。用一张照片留下你的痕迹吧！✌",
+            title: "探索者纪事",
+            description: "一封数字漂流瓶。看看别人留下了什么，也留下你自己的痕迹！ 😁✌",
             uploadBtn: "上传图片",
             loading: "加载中...",
         },
@@ -116,6 +134,12 @@ export const dictionaries = {
             uploading: "上传中...",
             success: "谢谢你！",
         },
+        welcomeScreen: {
+            title: "恭喜你！🎉",
+            description1: "你找到了隐藏的 QR 码！",
+            description2: "看看别人留下了什么，并留下你自己的痕迹",
+            startBtn: "好！✌",
+        },
         errors: {
             general: "发生错误",
             fileType: "仅支持 JPG、PNG 或 WebP 格式！",
@@ -125,8 +149,8 @@ export const dictionaries = {
 
     he: {
         home: {
-            title: "מזל טוב! 🎉",
-            description: "מצאת את קוד ה-QR הסודי. השאר חותם עם תמונה! ✌",
+            title: "יומן המגלים",
+            description: "בקבוק מסר דיגיטלי. הסתכל מה אחרים השאירו והשאר את הסימן שלך! 😁✌",
             uploadBtn: "העלה תמונה",
             loading: "טוען...",
         },
@@ -147,6 +171,12 @@ export const dictionaries = {
             uploading: "מעלה...",
             success: "תודה רבה!",
         },
+        welcomeScreen: {
+            title: "מזל טוב! 🎉",
+            description1: "מצאת את קוד ה-QR הסודי!",
+            description2: "ראה מה אחרים השאירו לפניך והשאר את חותמך",
+            startBtn: "אוקיי! ✌",
+        },
         errors: {
             general: "אירעה שגיאה",
             fileType: "רק JPG, PNG או WebP מותרים!",
@@ -156,8 +186,8 @@ export const dictionaries = {
 
     fr: {
         home: {
-            title: "Félicitations ! 🎉",
-            description: "Tu as découvert le QR code secret. Laisse une trace avec une photo ! ✌",
+            title: "Chronique des Découvreurs",
+            description: "Une bouteille à la mer numérique. Découvre ce que les autres ont laissé et laisse ta propre trace ! 😁✌",
             uploadBtn: "Téléverser une image",
             loading: "Chargement...",
         },
@@ -178,6 +208,12 @@ export const dictionaries = {
             uploading: "Téléversement...",
             success: "Merci beaucoup !",
         },
+        welcomeScreen: {
+            title: "Félicitations ! 🎉",
+            description1: "Tu as découvert le QR code secret !",
+            description2: "Regarde ce que les autres ont laissé et laisse ta propre trace",
+            startBtn: "OK ! ✌",
+        },
         errors: {
             general: "Une erreur est survenue",
             fileType: "Seuls JPG, PNG ou WebP sont autorisés !",
@@ -187,8 +223,8 @@ export const dictionaries = {
 
     ru: {
         home: {
-            title: "Поздравляем! 🎉",
-            description: "Ты нашёл секретный QR-код. Оставь след с помощью фотографии! ✌",
+            title: "Хроника исследователей",
+            description: "Цифровое послание в бутылке. Посмотри, что оставили другие, и оставь свой след! 😁✌",
             uploadBtn: "Загрузить изображение",
             loading: "Загрузка...",
         },
@@ -209,6 +245,12 @@ export const dictionaries = {
             uploading: "Загрузка...",
             success: "Спасибо!",
         },
+        welcomeScreen: {
+            title: "Поздравляем! 🎉",
+            description1: "Ты нашёл секретный QR-код!",
+            description2: "Посмотри, что оставили другие до тебя, и оставь свой след",
+            startBtn: "Окей! ✌",
+        },
         errors: {
             general: "Произошла ошибка",
             fileType: "Разрешены только JPG, PNG или WebP!",
@@ -218,8 +260,8 @@ export const dictionaries = {
 
     es: {
         home: {
-            title: "¡Felicidades! 🎉",
-            description: "Has descubierto el código QR secreto. ¡Deja tu huella con una foto! ✌",
+            title: "Crónica de los Descubridores",
+            description: "Un mensaje digital en botella. Mira lo que otros han dejado y deja tu propia huella! 😁✌",
             uploadBtn: "Subir imagen",
             loading: "Cargando...",
         },
@@ -239,6 +281,12 @@ export const dictionaries = {
             instruction: "Haz clic o arrastra una imagen aquí",
             uploading: "Subiendo...",
             success: "¡Muchas gracias!",
+        },
+        welcomeScreen: {
+            title: "¡Felicidades! 🎉",
+            description1: "¡Has descubierto el código QR secreto!",
+            description2: "Mira lo que otros han dejado antes que tú y deja tu propia huella",
+            startBtn: "¡Ok! ✌",
         },
         errors: {
             general: "Ha ocurrido un error",
