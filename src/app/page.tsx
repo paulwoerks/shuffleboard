@@ -53,18 +53,21 @@ export default function Home() {
     <main className="h-screen w-screen bg-black flex flex-col p-[5px] overflow-hidden">
 
       {/* HEADER */}
-      <header className="w-full py-6 px-4 shrink-0 flex justify-between items-start">
-        <div>
-          <h1 className="text-white text-2xl font-black tracking-tighter drop-shadow-md">
+      <header className="w-full py-6 px-4 flex items-center">
+        {/* LINKS: Titel + Beschreibung, umbruchfähig */}
+        <div className="flex flex-col justify-center flex-1 min-w-0">
+          <h1 className="text-white text-2xl font-black tracking-tighter drop-shadow-md break-words">
             {t.home.title}
           </h1>
-          <p className="text-zinc-400 text-sm">{t.home.description}</p>
+          <p className="text-zinc-400 text-sm mt-1 break-words">
+            {t.home.description}
+          </p>
         </div>
 
-        {/* INFO BUTTON: Weißer Kreis, schwarzes i */}
+        {/* RECHTS: Info-Button, fix */}
         <button
           onClick={() => setIsInfoOpen(true)}
-          className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-black font-bold shadow-xl active:scale-95 transition-all"
+          className="w-12 h-12 flex-shrink-0 rounded-full bg-white flex items-center justify-center text-black font-bold shadow-xl active:scale-95 transition-all ml-4"
         >
           <span className="text-lg">i</span>
         </button>
@@ -84,7 +87,7 @@ export default function Home() {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-zinc-700 font-bold uppercase tracking-widest">
-            {loading ? "Lädt..." : "Noch keine Storys vorhanden"}
+            {t.home.loading}
           </div>
         )}
       </section>
@@ -93,7 +96,7 @@ export default function Home() {
       <footer className="w-full py-6 px-4 shrink-0">
         <button
           onClick={() => setIsModalOpen(true)}
-          className="w-full py-4 bg-white text-black rounded-2xl font-bold shadow-2xl hover:bg-pink-500 hover:text-white active:scale-95 transition-all z-50 relative"
+          className="w-full py-4 bg-[#A35042] text-white rounded-2xl font-bold shadow-2xl hover:bg-[#8c4037] active:scale-95 transition-all z-50 relative"
         >
           {t.home.uploadBtn}
         </button>

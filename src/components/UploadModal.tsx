@@ -87,14 +87,14 @@ export default function UploadModal({ isOpen, onClose, onUploadSuccess, loading,
                         onDragLeave={() => setIsDragging(false)}
                         onDrop={handleDrop}
                         className={`relative group cursor-pointer border-2 border-dashed rounded-3xl transition-all flex flex-col items-center justify-center overflow-hidden h-60
-                            ${isDragging ? 'border-pink-500 bg-blue-50' : 'border-gray-300 bg-gray-50 hover:border-pink-500'}
-                            ${preview ? 'border-gray-500' : ''}`}
+      ${isDragging ? 'border-grey bg-grey' : 'border-gray-300 bg-gray-50 hover:border-black'}
+      ${preview ? 'border-gray-500' : ''}`}
                     >
                         {preview ? (
                             <img src={preview} alt="Preview" className="w-full h-full object-cover" />
                         ) : (
                             <div className="text-center pointer-events-none px-4">
-                                <p className="text-gray-900 font-semibold text-lg">Click or drop here</p>
+                                <p className="text-gray-900 font-semibold text-lg">{t.uploadModal.instruction}</p>
                                 <p className="text-gray-400 text-sm">JPG, PNG, WebP</p>
                             </div>
                         )}
@@ -113,14 +113,14 @@ export default function UploadModal({ isOpen, onClose, onUploadSuccess, loading,
                             type="text"
                             name="comment"
                             placeholder={t.uploadModal.placeholder}
-                            className="w-full p-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-pink-500 outline-none"
+                            className="w-full p-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-black outline-none"
                         />
                     </div>
 
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full py-4 rounded-2xl font-bold text-white bg-black hover:bg-pink-600 shadow-lg active:scale-95 disabled:bg-gray-300"
+                        className="w-full py-4 rounded-2xl font-bold text-white bg-[#A35042] hover:bg-[#8C4037] shadow-lg active:scale-95 disabled:bg-gray-300"
                     >
                         {loading ? t.uploadModal.uploading : t.uploadModal.submitBtn}
                     </button>

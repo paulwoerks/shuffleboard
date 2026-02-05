@@ -78,15 +78,10 @@ export default function StoryPlayer({
                     <div className="flex items-center gap-2">
                         {/* Live-Indikator nur beim neuesten Bild */}
                         {currentIndex === 0 && !isPaused && <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />}
-                        <span className="text-[10px] font-black uppercase tracking-[0.2em]">
-                            {currentIndex === 0 ? t.storyPlayer.live : t.storyPlayer.history}
+                        <span className="text-[11px] font-black">
+                            {formatTimestamp(timestamp, locale)}
                         </span>
                     </div>
-
-                    {/* Das Datum wird jetzt mit dem aktuellen Locale formatiert */}
-                    <span className="text-[11px] font-bold tabular-nums">
-                        {formatTimestamp(timestamp, locale)}
-                    </span>
                 </div>
 
                 <AnimatePresence mode="wait">
@@ -95,7 +90,7 @@ export default function StoryPlayer({
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        className="text-2xl font-bold leading-tight"
+                        className="text-xl font-bold leading-tight"
                     >
                         {comment || "..."}
                     </motion.p>
