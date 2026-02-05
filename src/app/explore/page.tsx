@@ -20,7 +20,7 @@ export default function ExplorePage() {
 
             <header className="w-full py-6 px-4 flex items-center shrink-0">
                 <div className="flex flex-col justify-center flex-1 min-w-0">
-                    <h1 className="text-white text-2xl font-black tracking-tighter uppercase italic">
+                    <h1 className="text-white text-2xl font-black tracking-tighter">
                         {t.home.title}
                     </h1>
                     <p className="text-zinc-400 text-sm mt-1 leading-tight">
